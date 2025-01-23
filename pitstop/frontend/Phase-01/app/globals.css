@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* تم پیش‌فرض (لایت) */
+:root {
+  --background: #ffffff; /* رنگ پس‌زمینه سفید */
+  --foreground: #000000; /* رنگ متن مشکی */
+}
+
+/* تم دارک */
+.dark {
+  --background: #000000; /* رنگ پس‌زمینه مشکی */
+  --foreground: #ffffff; /* رنگ متن سفید */
+}
+
+/* انتقال برای تغییر تم */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s, color 0.3s;
+}
