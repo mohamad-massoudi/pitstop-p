@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className='dark:bg-gray-950'>
         <ThemeProvider>
           <TranslationProvider>
             <Header /> {/* هدر رو اینجا قرار می‌دهیم */}

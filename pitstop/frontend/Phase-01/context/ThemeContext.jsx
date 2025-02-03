@@ -12,7 +12,8 @@ export const ThemeProvider = ({ children }) => {
     const storedTheme = localStorage.getItem('theme');
     if (storedTheme) {
       setTheme(storedTheme);
-      document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+      // تغییر کلاس‌های HTML بر اساس تم ذخیره‌شده
+      document.documentElement.classList.add(storedTheme); // اعمال تم در HTML
     }
   }, []);
 
@@ -20,7 +21,10 @@ export const ThemeProvider = ({ children }) => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+
+    // تغییر کلاس‌ها برای HTML
+    document.documentElement.classList.remove('light', 'dark');
+    document.documentElement.classList.add(newTheme); // تغییر تم در HTML
   };
 
   return (
