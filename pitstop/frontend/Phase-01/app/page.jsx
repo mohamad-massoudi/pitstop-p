@@ -1,15 +1,12 @@
-'use client';
+// app/page.tsx
+'use client'; // استفاده از 'use client' در ابتدای فایل
 
-import { useTranslation } from 'react-i18next'; // ایمپورت پرووایدری که برای زبان استفاده می‌کنی
+import Home from '../components/Home'; // ایمپورت کامپوننت Home
 
-export default function Home() {
-  const { t } = useTranslation(); // استفاده از hook برای ترجمه
-
+export default function Page() {
   return (
-    <div className="min-h-screen">
-      <main className="p-6">
-        <p>{t('description')}</p>
-      </main>
+    <div>
+      <Home /> {/* کامپوننت Home برای محتوای صفحه */}
     </div>
   );
 }
