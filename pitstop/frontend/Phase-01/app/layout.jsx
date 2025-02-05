@@ -1,21 +1,23 @@
-'use client';
+"use client";
 
-import './globals.css';
-import { ThemeProvider } from '../context/ThemeContext';
-import TranslationProvider from '../context/TranslationProvider';
-import Header from '../components/Header';  // ایمپورت هدر
-import { useTranslation } from 'react-i18next'; // برای دسترسی به زبان انتخاب‌شده
-import { useEffect, useState } from 'react';
+import "./globals.css";
+import { ThemeProvider } from "../context/ThemeContext";
+import TranslationProvider from "../context/TranslationProvider";
+import Header from "../components/Header"; // ایمپورت هدر
+import { useTranslation } from "react-i18next"; // برای دسترسی به زبان انتخاب‌شده
+import { useEffect, useState } from "react";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar"
 
 export default function RootLayout({ children }) {
   const { i18n } = useTranslation();
-  const [dir, setDir] = useState('ltr'); // وضعیت برای تعیین جهت صفحه
+  const [dir, setDir] = useState("ltr"); // وضعیت برای تعیین جهت صفحه
 
   useEffect(() => {
-    if (i18n.language === 'fa' || i18n.language === 'ar') {
-      setDir('rtl'); // برای زبان‌های فارسی و عربی
+    if (i18n.language === "fa" || i18n.language === "ar") {
+      setDir("rtl"); // برای زبان‌های فارسی و عربی
     } else {
-      setDir('ltr'); // برای زبان‌های دیگر
+      setDir("ltr"); // برای زبان‌های دیگر
     }
   }, [i18n.language]);
 
@@ -25,7 +27,14 @@ export default function RootLayout({ children }) {
         <ThemeProvider>
           <TranslationProvider>
             <Header /> {/* هدر ثابت می‌ماند و جهت آن تغییر نمی‌کند */}
-            <div className={`min-h-screen ${dir === 'rtl' ? 'rtl' : 'ltr'}`}>
+            <SidebarProvider>
+              <AppSidebar />
+              <main>
+                <SidebarTrigger />
+                {children}
+              </main>
+            </SidebarProvider>
+            <div className={`min-h-screen ${dir === "rtl" ? "rtl" : "ltr"}`}>
               {children} {/* محتوای صفحه که تغییر جهت می‌دهد */}
             </div>
           </TranslationProvider>

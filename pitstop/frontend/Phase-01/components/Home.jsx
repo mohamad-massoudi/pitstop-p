@@ -9,7 +9,6 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <main className="p-6">
-        <p>{t('description')}</p>
       </main>
     </div>
   );
