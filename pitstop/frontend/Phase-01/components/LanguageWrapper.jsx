@@ -1,4 +1,3 @@
-// components/LanguageWrapper.tsx
 'use client';
 
 import { useTranslation } from 'react-i18next';
@@ -8,13 +7,14 @@ export default function LanguageWrapper({ children }) {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    // تغییر جهت صفحه بر اساس زبان انتخاب‌شده
+    // تغییر جهت محتوای صفحه بر اساس زبان انتخاب‌شده
+    const body = document.querySelector('body');
     if (i18n.language === 'fa' || i18n.language === 'ar') {
-      document.documentElement.setAttribute('dir', 'rtl'); // راست‌چین برای فارسی و عربی
+      body?.setAttribute('dir', 'rtl'); // راست‌چین برای فارسی و عربی
     } else {
-      document.documentElement.setAttribute('dir', 'ltr'); // چپ‌چین برای سایر زبان‌ها
+      body?.setAttribute('dir', 'ltr'); // چپ‌چین برای سایر زبان‌ها
     }
   }, [i18n.language]);
 
-  return <>{children}</>; // نمایش محتوای داخلی
+  return <div>{children}</div>; // فقط محتوای داخلی تغییر جهت می‌دهد
 }

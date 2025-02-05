@@ -1,5 +1,4 @@
-// app/page.tsx
-'use client'; // استفاده از 'use client' در ابتدای فایل
+'use client';
 
 import Home from '../components/Home'; // ایمپورت کامپوننت Home
 

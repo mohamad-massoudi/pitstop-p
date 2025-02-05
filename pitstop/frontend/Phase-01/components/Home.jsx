@@ -1,5 +1,4 @@
-// components/Home.tsx
-'use client'; // برای اطمینان از اینکه این کامپوننت در کلاینت رندر می‌شود
+'use client';  // برای اطمینان از اینکه این کامپوننت در کلاینت رندر می‌شود
 
 import { useTranslation } from 'react-i18next'; // برای ترجمه
 import { useEffect } from 'react';
