@@ -4,10 +4,9 @@ import "./globals.css";
 import { ThemeProvider } from "../context/ThemeContext";
 import TranslationProvider from "../context/TranslationProvider";
 import Header from "../components/Header"; // ایمپورت هدر
+import CustomSidebar from "@/components/CustomSidebar"; // ایمپورت کامپوننت سایدبار
 import { useTranslation } from "react-i18next"; // برای دسترسی به زبان انتخاب‌شده
 import { useEffect, useState } from "react";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar"
 
 export default function RootLayout({ children }) {
   const { i18n } = useTranslation();
@@ -26,16 +25,16 @@ export default function RootLayout({ children }) {
       <body className={`dark:bg-gray-950`}>
         <ThemeProvider>
           <TranslationProvider>
-            <Header /> {/* هدر ثابت می‌ماند و جهت آن تغییر نمی‌کند */}
-            <SidebarProvider>
-              <AppSidebar />
-              <main>
-                <SidebarTrigger />
-                {children}
-              </main>
-            </SidebarProvider>
-            <div className={`min-h-screen ${dir === "rtl" ? "rtl" : "ltr"}`}>
-              {children} {/* محتوای صفحه که تغییر جهت می‌دهد */}
+            {/* هدر ثابت می‌ماند و جهت آن تغییر نمی‌کند */}
+            <Header />
+
+            <div className={`flex ${dir === "rtl" ? "rtl" : "ltr"}`}>
+              {/* اضافه کردن سایدبار به لایوت */}
+              <CustomSidebar />
+
+              <div className="flex-1 p-6">
+                {children} {/* محتوای صفحه که تغییر جهت می‌دهد */}
+              </div>
             </div>
           </TranslationProvider>
         </ThemeProvider>
