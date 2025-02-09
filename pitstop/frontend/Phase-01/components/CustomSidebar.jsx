@@ -1,39 +1,36 @@
 "use client";
 
 import { useState } from "react";
-import { Sidebar, Menu, MenuItem } from "react-pro-sidebar"; 
-import { FaHome } from "react-icons/fa"; 
-import { usePathname, useRouter } from "next/navigation";
+import { Sidebar } from "react-pro-sidebar";  // فقط Sidebar رو وارد می‌کنیم چون منویی نداریم
+import { FaBars } from "react-icons/fa"; // آیکون دکمه باز و بسته کردن
 
 const CustomSidebar = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const router = useRouter();
-  const pathname = usePathname(); 
+  const [collapsed, setCollapsed] = useState(false);  // وضعیت باز یا بسته بودن نوار کناری
 
   const toggleSidebar = () => {
-    setCollapsed(!collapsed); 
+    setCollapsed(!collapsed);  // تغییر وضعیت باز و بسته
   };
 
-  const isActive = (href) => pathname === href; 
-
   return (
-    <div style={{ display: "flex", height: "100vh",}}>
-      <Sidebar collapsed={collapsed}  >
-        <Menu iconShape="square">
-          <div>
-            <button onClick={toggleSidebar}>
-              {collapsed ? "→" : "←"}
-            </button>
-          </div>
-
-          <MenuItem 
-            icon={<FaHome />} 
-            onClick={() => router.push("/home")}
-            className={isActive("/home") ? "active" : ""}
+    <div style={{ display: "flex", height: "100vh", position: "relative" }}>
+      <Sidebar collapsed={collapsed} style={{ height: "100vh", position: "absolute" }}>
+        <div>
+          <button
+            onClick={toggleSidebar}  // روی دکمه کلیک می‌کنیم تا نوار کناری باز یا بسته بشه
+            style={{
+              position: "absolute", // دکمه رو در گوشه بالا قرار می‌دهیم
+              top: 10,
+              left: 10,
+              padding: "10px",
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "24px",
+            }}
           >
-            Home
-          </MenuItem>
-        </Menu>
+            <FaBars /> {/* آیکون سه خطی برای باز و بسته کردن نوار */}
+          </button>
+        </div>
       </Sidebar>
     </div>
   );
