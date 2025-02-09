@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang={i18n.language}>
-      <body className={`dark:bg-gray-950`}>
+      <body className={`dark:bg-gray-900`}>
         <ThemeProvider>
           <TranslationProvider>
             {/* هدر ثابت می‌ماند و جهت آن تغییر نمی‌کند */}
