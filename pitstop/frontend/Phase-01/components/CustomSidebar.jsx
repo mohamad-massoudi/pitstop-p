@@ -1,6 +1,13 @@
-import React, { useState } from 'react';
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import { FaHome, FaShoppingCart, FaFileAlt, FaCalendarAlt, FaCog, FaChartBar } from 'react-icons/fa'; // استفاده از آیکون‌های react-icons
+import React, { useState } from "react";
+import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import {
+  FaHome,
+  FaShoppingCart,
+  FaFileAlt,
+  FaCalendarAlt,
+  FaCog,
+  FaChartBar,
+} from "react-icons/fa"; // استفاده از آیکون‌های react-icons
 
 const Playground = () => {
   const [collapsed, setCollapsed] = useState(true); // نوار کناری به طور پیش‌فرض بسته است
@@ -8,26 +15,29 @@ const Playground = () => {
 
   const menuItemStyles = {
     root: {
-      fontSize: '13px',
+      fontSize: "14px", // افزایش اندازه فونت منو
       fontWeight: 400,
     },
     icon: {
-      color: '#0098e5',
+      color: "black", // تغییر رنگ آیکون‌ها به مشکی
+      fontSize: "1.25rem", // بزرگتر کردن اندازه آیکون‌ها
+      marginRight: "10px", // افزایش فاصله بین آیکون و متن
     },
     SubMenuExpandIcon: {
-      color: '#b6b7b9',
+      color: "#b6b7b9",
     },
     subMenuContent: ({ level }) => ({
-      backgroundColor: level === 0 ? '#fbfcfd' : 'transparent',
+      backgroundColor: level === 0 ? "#fbfcfd" : "transparent",
     }),
     button: {
-      '&:hover': {
-        backgroundColor: '#c5e4ff',
-        color: '#44596e',
+      "&:hover": {
+        backgroundColor: "#c5e4ff",
+        color: "#44596e",
       },
     },
     label: ({ open }) => ({
       fontWeight: open ? 600 : undefined,
+      fontSize: "1.2rem", // بزرگتر کردن اندازه فونت برای عنوان
     }),
   };
 
@@ -36,58 +46,60 @@ const Playground = () => {
       <Sidebar
         collapsed={collapsed}
         breakPoint="md"
-        rtl={rtl}
         rootStyles={{
-          color: '#607489',
+          position:"fixed",
+          color: "#607489",
         }}
         backgroundColor="#ffffff"
         onMouseEnter={() => setCollapsed(false)} // وقتی موس وارد نوار کناری می‌شود
-        onMouseLeave={() => setCollapsed(true)}  // وقتی موس از نوار کناری خارج می‌شود
+        onMouseLeave={() => setCollapsed(true)} // وقتی موس از نوار کناری خارج می‌شود
       >
         <div className="flex flex-col h-full">
-          <div className="my-4"> {/* Placeholder for SidebarHeader */} </div>
-          <div className="flex-1 mb-8">
-            <Menu menuItemStyles={menuItemStyles}>
-              <SubMenu label="Charts" icon={<FaChartBar />} suffix={<div className="badge-danger">6</div>}>
-                <MenuItem>Pie charts</MenuItem>
-                <MenuItem>Line charts</MenuItem>
-                <MenuItem>Bar charts</MenuItem>
-              </SubMenu>
-              <SubMenu label="Maps" icon={<FaCog />}>
-                <MenuItem>Google maps</MenuItem>
-                <MenuItem>Open street maps</MenuItem>
-              </SubMenu>
-              <SubMenu label="Components" icon={<FaHome />}>
-                <MenuItem>Grid</MenuItem>
-                <MenuItem>Layout</MenuItem>
-              </SubMenu>
-              <SubMenu label="E-commerce" icon={<FaShoppingCart />}>
-                <MenuItem>Product</MenuItem>
-                <MenuItem>Orders</MenuItem>
-                <MenuItem>Credit card</MenuItem>
-              </SubMenu>
-            </Menu>
-
-            <div className="px-6 mb-2 mt-8">
-              <h2 className="font-semibold opacity-70">Extra</h2>
+          <div> {/* Placeholder for SidebarHeader */} </div>
+          <div className="flex-1">
+            <div className="px-6 mb-4 mt-8 flex justify-center ">
+              <h2 className="font-medium opacity-90 text-lg">services</h2> {/* افزایش اندازه متن */}
             </div>
-
-            <Menu menuItemStyles={menuItemStyles}>
-              <MenuItem icon={<FaCalendarAlt />} suffix={<div className="badge-success">New</div>}>
-                Calendar
-              </MenuItem>
-              <MenuItem icon={<FaFileAlt />}>Documentation</MenuItem>
-              <MenuItem disabled icon={<FaCog />}>
-                Examples
-              </MenuItem>
+            <Menu menuItemStyles={menuItemStyles} className="flex flex-col">
+              <SubMenu
+                label="Charts"
+                icon={<FaChartBar className="text-xl" />} // تغییر اندازه آیکون‌ها
+                suffix={<div className="badge-danger text-base">6</div>} // افزایش اندازه متن در بخش badge
+                style={{ marginBottom: "15px" }} // اضافه کردن فاصله بین SubMenu ها
+              >
+                <MenuItem className="text-sm opacity-70">Pie charts</MenuItem> {/* کاهش اندازه و opacity برای متن */}
+                <MenuItem className="text-sm opacity-70">Line charts</MenuItem>
+                <MenuItem className="text-sm opacity-70">Bar charts</MenuItem>
+              </SubMenu>
+              <SubMenu
+                label="Maps"
+                icon={<FaCog className="text-xl" />}
+                style={{ marginBottom: "15px" }} // اضافه کردن فاصله بین SubMenu ها
+              >
+                <MenuItem className="text-sm opacity-70">Google maps</MenuItem> {/* کاهش اندازه و opacity برای متن */}
+                <MenuItem className="text-sm opacity-70">Open street maps</MenuItem>
+              </SubMenu>
+              <SubMenu
+                label="Components"
+                icon={<FaHome className="text-xl" />}
+                style={{ marginBottom: "15px" }} // اضافه کردن فاصله بین SubMenu ها
+              >
+                <MenuItem className="text-lg">Grid</MenuItem>
+                <MenuItem className="text-lg">Layout</MenuItem>
+              </SubMenu>
+              <SubMenu
+                label="E-commerce"
+                icon={<FaShoppingCart className="text-xl" />}
+                style={{ marginBottom: "15px" }} // اضافه کردن فاصله بین SubMenu ها
+              >
+                <MenuItem className="text-lg">Product</MenuItem>
+                <MenuItem className="text-lg">Orders</MenuItem>
+                <MenuItem className="text-lg">Credit card</MenuItem>
+              </SubMenu>
             </Menu>
           </div>
-          <div className="my-4"> {/* Placeholder for SidebarFooter */} </div>
         </div>
       </Sidebar>
-
-      {/* حذف محتویات وسط صفحه */}
-      <main className="hidden"></main>
     </div>
   );
 };
