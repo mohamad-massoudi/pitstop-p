@@ -62,13 +62,13 @@ const CustomSidebar = () => {
         <div> {/* Placeholder for SidebarHeader */} </div>
         <div className="flex-1">
           <div className="px-6 mb-4 mt-8 flex justify-center ">
-            <h2 className="font-medium opacity-90 text-lg">services</h2> {/* افزایش اندازه متن */}
+            <h2 className="font-medium opacity-90 text-lg">Pitstop</h2> {/* افزایش اندازه متن */}
           </div>
           <Menu menuItemStyles={menuItemStyles} className="flex flex-col" style={{
             backgroundColor: theme === "dark" ? "transparent" : "transparent", // پس‌زمینه منو در تم تاریک
           }}>
             <SubMenu
-              label="Charts"
+              label="Dashboard"
               icon={<FaChartBar className="text-xl" />} // تغییر اندازه آیکون‌ها
               suffix={<div className="badge-danger text-base"></div>} // افزایش اندازه متن در بخش badge
               style={{ marginBottom: "15px" }} // اضافه کردن فاصله بین SubMenu ها
@@ -78,7 +78,7 @@ const CustomSidebar = () => {
               <MenuItem className="text-sm opacity-70">Bar charts</MenuItem>
             </SubMenu>
             <SubMenu
-              label="Maps"
+              label="Book a Service"
               icon={<FaCog className="text-xl" />}
               style={{ marginBottom: "15px" }} // اضافه کردن فاصله بین SubMenu ها
             >
@@ -86,7 +86,7 @@ const CustomSidebar = () => {
               <MenuItem className="text-sm opacity-70">Open street maps</MenuItem>
             </SubMenu>
             <SubMenu
-              label="Components"
+              label="Reviews & Ratings"
               icon={<FaHome className="text-xl" />}
               style={{ marginBottom: "15px" }} // اضافه کردن فاصله بین SubMenu ها
             >
@@ -94,7 +94,52 @@ const CustomSidebar = () => {
               <MenuItem className="text-lg">Layout</MenuItem>
             </SubMenu>
             <SubMenu
-              label="E-commerce"
+              label="Car Marketplace"
+              icon={<FaShoppingCart className="text-xl" />}
+              style={{ marginBottom: "15px"  }} // اضافه کردن فاصله بین SubMenu ها
+            >
+              <MenuItem className="text-lg">Product</MenuItem>
+              <MenuItem className="text-lg">Orders</MenuItem>
+              <MenuItem className="text-lg">Credit card</MenuItem>
+            </SubMenu>
+            <SubMenu
+              label="Car Parts Store"
+              icon={<FaShoppingCart className="text-xl" />}
+              style={{ marginBottom: "15px"  }} // اضافه کردن فاصله بین SubMenu ها
+            >
+              <MenuItem className="text-lg">Product</MenuItem>
+              <MenuItem className="text-lg">Orders</MenuItem>
+              <MenuItem className="text-lg">Credit card</MenuItem>
+            </SubMenu>
+            <SubMenu
+              label="Payments & Invoices"
+              icon={<FaShoppingCart className="text-xl" />}
+              style={{ marginBottom: "15px"  }} // اضافه کردن فاصله بین SubMenu ها
+            >
+              <MenuItem className="text-lg">Product</MenuItem>
+              <MenuItem className="text-lg">Orders</MenuItem>
+              <MenuItem className="text-lg">Credit card</MenuItem>
+            </SubMenu>
+            <SubMenu
+              label="My Bookings"
+              icon={<FaShoppingCart className="text-xl" />}
+              style={{ marginBottom: "15px"  }} // اضافه کردن فاصله بین SubMenu ها
+            >
+              <MenuItem className="text-lg">Product</MenuItem>
+              <MenuItem className="text-lg">Orders</MenuItem>
+              <MenuItem className="text-lg">Credit card</MenuItem>
+            </SubMenu>
+            <SubMenu
+              label="Messages & Support"
+              icon={<FaShoppingCart className="text-xl" />}
+              style={{ marginBottom: "15px"  }} // اضافه کردن فاصله بین SubMenu ها
+            >
+              <MenuItem className="text-lg">Product</MenuItem>
+              <MenuItem className="text-lg">Orders</MenuItem>
+              <MenuItem className="text-lg">Credit card</MenuItem>
+            </SubMenu>
+            <SubMenu
+              label="Settings"
               icon={<FaShoppingCart className="text-xl" />}
               style={{ marginBottom: "15px"  }} // اضافه کردن فاصله بین SubMenu ها
             >
