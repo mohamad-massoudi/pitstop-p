@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useTheme } from "../context/ThemeContext"; // استفاده از ThemeContext برای دسترسی به تم
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import {
-  FaHome,
   FaShoppingCart,
-  FaFileAlt,
-  FaCalendarAlt,
-  FaCog,
-  FaChartBar,
-  FaBars, // آیکون همبرگر
+  FaWrench,
+  FaGrinStars,
+  FaCarAlt,
+  FaShoppingBag,
+  FaCogs,
+  FaAddressCard,
 } from "react-icons/fa"; // استفاده از آیکون‌های react-icons
 
 const CustomSidebar = () => {
@@ -22,25 +22,25 @@ const CustomSidebar = () => {
     },
     icon: {
       color: theme === "dark" ? "white" : "black", // رنگ آیکون‌ها در تم تاریک سفید و در تم روشن سیاه
-      fontSize: "1.25rem", // بزرگتر کردن اندازه آیکون‌ها
-      marginRight: "10px", // افزایش فاصله بین آیکون و متن
+      fontSize: "1.25rem",
+      marginRight: "10px",
     },
     SubMenuExpandIcon: {
       color: "#b6b7b9",
     },
-    subMenuContent: ({ level }) => ({
+    subMenuContent: () => ({
       backgroundColor: theme === "dark" ? "#1a202c" : "#c5e4ff", // رنگ پس‌زمینه ساب منوها در تم تاریک
     }),
     button: {
       "&:hover": {
-        backgroundColor: theme === "dark" ? "#1a202c" : "#c5e4ff", // رنگ پس‌زمینه ساب منو در هاور
-        color: theme === "dark" ? "white" : "#44596e", // رنگ متن در هاور
+        backgroundColor: theme === "dark" ? "#1a202c" : "#c5e4ff",
+        color: theme === "dark" ? "white" : "#44596e",
       },
     },
     label: ({ open }) => ({
       fontWeight: open ? 600 : undefined,
-      fontSize: "1.2rem", // بزرگتر کردن اندازه فونت برای عنوان
-      color: theme === "dark" ? "white" : "black", // رنگ متن در تم تاریک سفید و در تم روشن سیاه
+      fontSize: "1.2rem",
+      color: theme === "dark" ? "white" : "black",
     }),
   };
 
@@ -50,53 +50,55 @@ const CustomSidebar = () => {
       breakPoint="md"
       rootStyles={{
         position: "fixed",
-        color: theme === "dark" ? "white" : "#607489", // رنگ متن در تم تاریک سفید و در تم روشن خاکی
-        backgroundColor: theme === "dark" ? "gray-900" : "white", // پس‌زمینه در تم تاریک خاکی و در تم روشن سفید
+        color: theme === "dark" ? "white" : "#607489",
+        backgroundColor: theme === "dark" ? "#1a202c" : "white",
         height: "100vh",
-        borderRight: theme === "dark" ? "none" : "1px solid white", // حذف بوردر سمت راست در تم دارک
+        borderRight: theme === "dark" ? "none" : "1px solid white",
       }}
-      onMouseEnter={() => setCollapsed(false)} // وقتی موس وارد نوار کناری می‌شود
-      onMouseLeave={() => setCollapsed(true)} // وقتی موس از نوار کناری خارج می‌شود
+      onMouseEnter={() => setCollapsed(false)}
+      onMouseLeave={() => setCollapsed(true)}
     >
       <div className="flex flex-col h-full dark:bg-gray-900">
-        <div> {/* Placeholder for SidebarHeader */} </div>
+        <div className="px-6 mb-4 mt-8 flex justify-center">
+          <h2 className="font-medium opacity-90 text-lg">Pitstop</h2>
+        </div>
         <div className="flex-1">
-          <div className="px-6 mb-4 mt-8 flex justify-center ">
-            <h2 className="font-medium opacity-90 text-lg">Pitstop</h2> {/* افزایش اندازه متن */}
-          </div>
-          <Menu menuItemStyles={menuItemStyles} className="flex flex-col" style={{
-            backgroundColor: theme === "dark" ? "transparent" : "transparent", // پس‌زمینه منو در تم تاریک
-          }}>
+          <Menu
+            menuItemStyles={menuItemStyles}
+            className="flex flex-col "
+            style={{
+              backgroundColor: theme === "dark" ? "transparent" : "transparent",
+            }}
+          >
             <SubMenu
               label="Dashboard"
-              icon={<FaChartBar className="text-xl" />} // تغییر اندازه آیکون‌ها
-              suffix={<div className="badge-danger text-base"></div>} // افزایش اندازه متن در بخش badge
-              style={{ marginBottom: "15px" }} // اضافه کردن فاصله بین SubMenu ها
+              icon={<FaAddressCard className="text-xl" />}
+              style={{ marginBottom: "15px" }}
             >
-              <MenuItem className="text-sm opacity-70">Pie charts</MenuItem> {/* کاهش اندازه و opacity برای متن */}
+              <MenuItem className="text-sm opacity-70">Pie charts</MenuItem>
               <MenuItem className="text-sm opacity-70">Line charts</MenuItem>
               <MenuItem className="text-sm opacity-70">Bar charts</MenuItem>
             </SubMenu>
             <SubMenu
               label="Book a Service"
-              icon={<FaCog className="text-xl" />}
-              style={{ marginBottom: "15px" }} // اضافه کردن فاصله بین SubMenu ها
+              icon={<FaWrench className="text-xl" />}
+              style={{ marginBottom: "15px" }}
             >
-              <MenuItem className="text-sm opacity-70">Google maps</MenuItem> {/* کاهش اندازه و opacity برای متن */}
+              <MenuItem className="text-sm opacity-70">Google maps</MenuItem>
               <MenuItem className="text-sm opacity-70">Open street maps</MenuItem>
             </SubMenu>
             <SubMenu
               label="Reviews & Ratings"
-              icon={<FaHome className="text-xl" />}
-              style={{ marginBottom: "15px" }} // اضافه کردن فاصله بین SubMenu ها
+              icon={<FaGrinStars className="text-xl" />}
+              style={{ marginBottom: "15px" }}
             >
               <MenuItem className="text-lg">Grid</MenuItem>
               <MenuItem className="text-lg">Layout</MenuItem>
             </SubMenu>
             <SubMenu
               label="Car Marketplace"
-              icon={<FaShoppingCart className="text-xl" />}
-              style={{ marginBottom: "15px"  }} // اضافه کردن فاصله بین SubMenu ها
+              icon={<FaCarAlt className="text-xl" />}
+              style={{ marginBottom: "15px" }}
             >
               <MenuItem className="text-lg">Product</MenuItem>
               <MenuItem className="text-lg">Orders</MenuItem>
@@ -104,8 +106,8 @@ const CustomSidebar = () => {
             </SubMenu>
             <SubMenu
               label="Car Parts Store"
-              icon={<FaShoppingCart className="text-xl" />}
-              style={{ marginBottom: "15px"  }} // اضافه کردن فاصله بین SubMenu ها
+              icon={<FaShoppingBag className="text-xl" />}
+              style={{ marginBottom: "15px" }}
             >
               <MenuItem className="text-lg">Product</MenuItem>
               <MenuItem className="text-lg">Orders</MenuItem>
@@ -114,39 +116,26 @@ const CustomSidebar = () => {
             <SubMenu
               label="Payments & Invoices"
               icon={<FaShoppingCart className="text-xl" />}
-              style={{ marginBottom: "15px"  }} // اضافه کردن فاصله بین SubMenu ها
+              style={{ marginBottom: "15px" }}
             >
               <MenuItem className="text-lg">Product</MenuItem>
               <MenuItem className="text-lg">Orders</MenuItem>
               <MenuItem className="text-lg">Credit card</MenuItem>
             </SubMenu>
-            <SubMenu
-              label="My Bookings"
-              icon={<FaShoppingCart className="text-xl" />}
-              style={{ marginBottom: "15px"  }} // اضافه کردن فاصله بین SubMenu ها
-            >
-              <MenuItem className="text-lg">Product</MenuItem>
-              <MenuItem className="text-lg">Orders</MenuItem>
-              <MenuItem className="text-lg">Credit card</MenuItem>
-            </SubMenu>
-            <SubMenu
-              label="Messages & Support"
-              icon={<FaShoppingCart className="text-xl" />}
-              style={{ marginBottom: "15px"  }} // اضافه کردن فاصله بین SubMenu ها
-            >
-              <MenuItem className="text-lg">Product</MenuItem>
-              <MenuItem className="text-lg">Orders</MenuItem>
-              <MenuItem className="text-lg">Credit card</MenuItem>
-            </SubMenu>
-            <SubMenu
-              label="Settings"
-              icon={<FaShoppingCart className="text-xl" />}
-              style={{ marginBottom: "15px"  }} // اضافه کردن فاصله بین SubMenu ها
-            >
-              <MenuItem className="text-lg">Product</MenuItem>
-              <MenuItem className="text-lg">Orders</MenuItem>
-              <MenuItem className="text-lg">Credit card</MenuItem>
-            </SubMenu>
+
+            {/* 🟢 ساب منوی تنظیمات در انتهای سایدبار */}
+            <div className="align-bottom justify-end ">
+              <SubMenu
+                label="Settings"
+                icon={<FaCogs className="text-xl" />}
+                style={{ marginBottom: "15px" }}
+              >
+                <MenuItem className="text-lg">Product</MenuItem>
+                <MenuItem className="text-lg">Orders</MenuItem>
+                <MenuItem className="text-lg">Credit card</MenuItem>
+              </SubMenu>
+            </div>
+            {/* 🔚 پایان بخش تنظیمات */}
           </Menu>
         </div>
       </div>
