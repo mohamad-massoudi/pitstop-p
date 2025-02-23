@@ -13,7 +13,12 @@ import {
 
 const CustomSidebar = () => {
   const [collapsed, setCollapsed] = useState(true);
+  const [openSubMenu, setOpenSubMenu] = useState(null); // مدیریت باز بودن فقط یک ساب منو
   const { theme } = useTheme();
+
+  const handleSubMenuClick = (menuName) => {
+    setOpenSubMenu((prev) => (prev === menuName ? null : menuName));
+  };
 
   const menuItemStyles = {
     root: { fontSize: "14px", fontWeight: 400 },
@@ -62,69 +67,86 @@ const CustomSidebar = () => {
             <SubMenu
               label="Dashboard"
               icon={<FaAddressCard className="text-xl" />}
-              style={{ marginBottom: "20px" }} // فاصله کمی کمتر شده
+              open={openSubMenu === "dashboard"}
+              onClick={() => handleSubMenuClick("dashboard")}
+              className="mb-5"
             >
-              <MenuItem className="text-sm opacity-70">Pie charts</MenuItem>
-              <MenuItem className="text-sm opacity-70">Line charts</MenuItem>
-              <MenuItem className="text-sm opacity-70">Bar charts</MenuItem>
+              <MenuItem>Pie charts</MenuItem>
+              <MenuItem>Line charts</MenuItem>
+              <MenuItem>Bar charts</MenuItem>
             </SubMenu>
+
             <SubMenu
               label="Book a Service"
               icon={<FaWrench className="text-xl" />}
-              style={{ marginBottom: "20px" }}
+              open={openSubMenu === "bookService"}
+              onClick={() => handleSubMenuClick("bookService")}
+              className="mb-5"
             >
-              <MenuItem className="text-sm opacity-70">Google maps</MenuItem>
-              <MenuItem className="text-sm opacity-70">Open street maps</MenuItem>
+              <MenuItem>Google maps</MenuItem>
+              <MenuItem>Open street maps</MenuItem>
             </SubMenu>
+
             <SubMenu
               label="Reviews & Ratings"
               icon={<FaGrinStars className="text-xl" />}
-              style={{ marginBottom: "20px" }}
+              open={openSubMenu === "reviews"}
+              onClick={() => handleSubMenuClick("reviews")}
+              className="mb-5"
             >
-              <MenuItem className="text-lg">Grid</MenuItem>
-              <MenuItem className="text-lg">Layout</MenuItem>
+              <MenuItem>Grid</MenuItem>
+              <MenuItem>Layout</MenuItem>
             </SubMenu>
+
             <SubMenu
               label="Car Marketplace"
               icon={<FaCarAlt className="text-xl" />}
-              style={{ marginBottom: "20px" }}
+              open={openSubMenu === "marketplace"}
+              onClick={() => handleSubMenuClick("marketplace")}
+              className="mb-5"
             >
-              <MenuItem className="text-lg">Product</MenuItem>
-              <MenuItem className="text-lg">Orders</MenuItem>
-              <MenuItem className="text-lg">Credit card</MenuItem>
+              <MenuItem>Product</MenuItem>
+              <MenuItem>Orders</MenuItem>
+              <MenuItem>Credit card</MenuItem>
             </SubMenu>
+
             <SubMenu
               label="Car Parts Store"
               icon={<FaShoppingBag className="text-xl" />}
-              style={{ marginBottom: "20px" }}
+              open={openSubMenu === "partsStore"}
+              onClick={() => handleSubMenuClick("partsStore")}
+              className="mb-5"
             >
-              <MenuItem className="text-lg">Product</MenuItem>
-              <MenuItem className="text-lg">Orders</MenuItem>
-              <MenuItem className="text-lg">Credit card</MenuItem>
+              <MenuItem>Product</MenuItem>
+              <MenuItem>Orders</MenuItem>
+              <MenuItem>Credit card</MenuItem>
             </SubMenu>
+
             <SubMenu
               label="Payments & Invoices"
               icon={<FaShoppingCart className="text-xl" />}
-              style={{ marginBottom: "20px" }}
+              open={openSubMenu === "payments"}
+              onClick={() => handleSubMenuClick("payments")}
+              className="mb-5"
             >
-              <MenuItem className="text-lg">Product</MenuItem>
-              <MenuItem className="text-lg">Orders</MenuItem>
-              <MenuItem className="text-lg">Credit card</MenuItem>
+              <MenuItem>Product</MenuItem>
+              <MenuItem>Orders</MenuItem>
+              <MenuItem>Credit card</MenuItem>
             </SubMenu>
 
-            {/* 🟢 ساب منوی تنظیمات در انتهای سایدبار */}
             <div className="align-bottom justify-end">
               <SubMenu
                 label="Settings"
                 icon={<FaCogs className="text-xl" />}
-                style={{ marginBottom: "20px" }}
+                open={openSubMenu === "settings"}
+                onClick={() => handleSubMenuClick("settings")}
+                className="mb-5"
               >
-                <MenuItem className="text-lg">Product</MenuItem>
-                <MenuItem className="text-lg">Orders</MenuItem>
-                <MenuItem className="text-lg">Credit card</MenuItem>
+                <MenuItem>Product</MenuItem>
+                <MenuItem>Orders</MenuItem>
+                <MenuItem>Credit card</MenuItem>
               </SubMenu>
             </div>
-            {/* 🔚 پایان بخش تنظیمات */}
           </Menu>
         </div>
       </div>
